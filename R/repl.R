@@ -4,7 +4,7 @@
 #' @param envir environment
 #' @export
 repl <- function(prompt = 'lisprr> ', envir = parent.frame()) {
-    while(TRUE) {
+    repeat {
         input <- readline(prompt)
         if (identical(input, "q")) {
             cat("bye.\n")

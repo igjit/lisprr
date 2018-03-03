@@ -1,7 +1,6 @@
 #' Parse s-expression
 #'
 #' @param s s-expression
-#' @export
 parse <- function(s) {
     read_from(tokenize(s), 1)[[1]]
 }

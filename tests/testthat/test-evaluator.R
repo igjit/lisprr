@@ -68,3 +68,8 @@ test_that("define", {
     evaluate("(define map (lambda (f l) (if (null? l) (quote ()) (cons (f (car l)) (map f (cdr l))))))", env)
     expect_equal(evaluate("(map (lambda (x) (+ x 10)) (list 1 2 3))", env), list(11, 12, 13))
 })
+
+test_that("translate", {
+    expect_equal(translate("(set! a 1)"), quote(a <- 1))
+    expect_equal(translate("(not a)"), quote(!a))
+})

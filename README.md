@@ -34,9 +34,9 @@ lisprr::translate("(+ 1 2)")
 
 ```r
 lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
-#> .Primitive("<-")(add2, function(x = NULL) {
+#> add2 <- function(x = NULL) {
 #>     x + 2
-#> })
+#> }
 ```
 
 ### repl

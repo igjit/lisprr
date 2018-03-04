@@ -16,13 +16,13 @@ translate <- function(s) {
 }
 
 r_functions <- list(
-    "begin" = `{`,
-    "set!" = `<-`,
-    "define" = `<-`,
-    "=" = `==`,
-    "eq?" = `==`,
+    "begin" = as.name("{"),
+    "set!" = as.name("<-"),
+    "define" = as.name("<-"),
+    "=" = as.name("="),
+    "eq?" = as.name("="),
     "equal?" = identical,
-    "not" = `!`,
+    "not" = as.name("!"),
     "cons" = function(x, y) append(list(x), y),
     "car" = function(x) x[[1]],
     "cdr" = function(x) x[-1],

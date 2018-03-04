@@ -37,12 +37,3 @@ atom <- function(token) {
     num <- suppressWarnings(as.numeric(token))
     if (is.na(num)) token else num
 }
-
-to_string <- function(exp) {
-    if (is.list(exp)) {
-        sprintf("(%s)", do.call(paste, lapply(exp, to_string)))
-    } else {
-        tryCatch(as.character(exp),
-                 error=function(e) sprintf("#<%s>", typeof(exp)))
-    }
-}

@@ -16,13 +16,13 @@ translate <- function(s) {
 }
 
 r_functions <- list(
-    "begin" = as.name("{"),
-    "set!" = as.name("<-"),
-    "define" = as.name("<-"),
-    "=" = as.name("="),
-    "eq?" = as.name("="),
+    "begin" = quote(`{`),
+    "set!" = quote(`<-`),
+    "define" = quote(`<-`),
+    "=" = quote(`=`),
+    "eq?" = quote(`=`),
     "equal?" = identical,
-    "not" = as.name("!"),
+    "not" = quote(`!`),
     "cons" = function(x, y) append(list(x), y),
     "car" = function(x) x[[1]],
     "cdr" = function(x) x[-1],
@@ -43,7 +43,7 @@ compile <- function(x) {
         exps <- x[-c(1, 2)]
         args <- vector("list", length(vars))
         names(args) <- as.character(vars)
-        body <- as.call(c(as.name("{"), lapply(exps, compile)))
+        body <- as.call(c(quote(`{`), lapply(exps, compile)))
         call("function", as.pairlist(args), body)
     } else {                            # other functions
         r_func <- if (is.list(x[[1]])) NULL else r_functions[[x[[1]]]]

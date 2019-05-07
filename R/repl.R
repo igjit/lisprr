@@ -11,7 +11,7 @@ repl <- function(prompt = 'lisprr> ', envir = parent.frame()) {
             break
         }
         val <- tryCatch(evaluate(input, envir),
-                        error = function(e) e)
+                        error = identity)
         str <- if (inherits(val, "error")) c(" ERROR:", val[[1]]) else to_string(val)
         cat(str)
         cat("\n")

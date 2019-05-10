@@ -46,7 +46,7 @@ compile <- function(x) {
         body <- as.call(c(quote(`{`), lapply(exps, compile)))
         call("function", as.pairlist(args), body)
     } else {                            # other functions
-        r_func <- if (is.list(x[[1]])) NULL else r_functions[[x[[1]]]]
+        r_func <- if (!is.list(x[[1]])) r_functions[[x[[1]]]]
         if (is.null(r_func)) {
             as.call(lapply(x, compile))
         } else {

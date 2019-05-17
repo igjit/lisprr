@@ -3,7 +3,7 @@
 #' @param prompt prompt
 #' @param envir environment
 #' @export
-repl <- function(prompt = 'lisprr> ', envir = parent.frame()) {
+repl <- function(prompt = "lisprr> ", envir = parent.frame()) {
     repeat {
         input <- readline(prompt)
         if (identical(input, "q")) {
@@ -23,6 +23,6 @@ to_string <- function(exp) {
         sprintf("(%s)", do.call(paste, lapply(exp, to_string)))
     } else {
         tryCatch(as.character(exp),
-                 error=function(e) sprintf("#<%s>", typeof(exp)))
+                 error = function(e) sprintf("#<%s>", typeof(exp)))
     }
 }

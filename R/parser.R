@@ -19,7 +19,7 @@ read_from <- function(tokens, i) {
     if (tokens[i] == "(") {
         L <- list()
         i <- i + 1                      # skip "("
-        while(tokens[i] != ")") {
+        while (tokens[i] != ")") {
             res <- read_from(tokens, i)
             L <- append(L, res[1])
             i <- res[[2]]

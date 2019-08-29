@@ -2,9 +2,18 @@
 #'
 #' @param s s-expression
 #' @param ... additional arguments
+#' @importFrom tailr loop_transform
 #' @export
-evaluate <- function(s, ...) {
-  base::eval(translate(s), ...)
+evaluate <- function(s, envir = parent.frame()) {
+  exp <- translate(s)
+  result <- base::eval(exp, envir)
+  if (tail_call_optimization()) {
+    fname <- defined_function_name(exp)
+    if (is.name(fname)) {
+      envir[[as.character(fname)]] <- do.call(tailr::loop_transform, list(fname))
+    }
+  }
+  result
 }
 
 #' Translate s-expression to R
@@ -63,4 +72,17 @@ compile <- function(x) {
       as.call(c(r_func, lapply(x[-1], compile)))
     }
   }
+}
+
+tco <- function(enable) {
+  options(lisprr_tail_call_optimization = as.logical(enable))
+  tail_call_optimization()
+}
+
+tail_call_optimization <- function() {
+  identical(getOption("lisprr_tail_call_optimization"), TRUE)
+}
+
+defined_function_name <- function(x) {
+  if (identical(x[[1]], quote(`<-`)) && identical(x[[3]][[1]], quote(`function`))) x[[2]]
 }

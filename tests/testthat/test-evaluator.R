@@ -60,6 +60,7 @@ test_that("set!", {
 test_that("define", {
   expect_equal(evaluate("(begin (define add2 (lambda (x) (+ x 2))) (add2 40))"), 42)
   expect_equal(evaluate("(begin (define add3 (lambda (x) (set! x (+ x 1)) (set! x (+ x 2)) x)) (add3 4))"), 7)
+  expect_equal(evaluate("(begin (define (add2 x) (+ x 2)) (add2 40))"), 42)
   expect_equal(evaluate("(begin (define a 1) (set! a 100) a)"), 100)
   expect_equal(evaluate("(begin (define a 1) (set! a (list 2 3)) a)"), list(2, 3))
   expect_equal(evaluate("(begin (define l (list 2 3 (list 4 5))) l)"), list(2, 3, list(4, 5)))

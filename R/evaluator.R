@@ -18,7 +18,6 @@ translate <- function(s) {
 r_functions <- list(
   "begin" = quote(`{`),
   "set!" = quote(`<-`),
-  "define" = quote(`<-`),
   "=" = quote(`=`),
   "eq?" = quote(`=`),
   "equal?" = identical,
@@ -38,6 +37,10 @@ compile <- function(x) {
     x
   } else if (length(x) == 0) {          # empty list
     x
+  } else if (identical(x[[1]], "define")) { # (define var exp)
+    var <- x[[2]]
+    exp <- x[[3]]
+    call("<-", as.name(var), compile(exp))
   } else if (identical(x[[1]], "lambda")) { # (lambda (var*) exp*)
     vars <- x[[2]]
     exps <- x[-c(1, 2)]

@@ -18,8 +18,8 @@ translate <- function(s) {
 r_functions <- list(
   "begin" = quote(`{`),
   "set!" = quote(`<-`),
-  "=" = quote(`=`),
-  "eq?" = quote(`=`),
+  "=" = quote(`==`),
+  "eq?" = quote(`==`),
   "equal?" = identical,
   "not" = quote(`!`),
   "cons" = function(x, y) append(list(x), y),

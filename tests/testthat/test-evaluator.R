@@ -43,6 +43,11 @@ test_that("symbol?", {
   expect_equal(evaluate("(symbol? 1)"), FALSE)
 })
 
+test_that("=", {
+  expect_true(evaluate("(= 1 1)"))
+  expect_false(evaluate("(= 1 2)"))
+})
+
 test_that("equal?", {
   expect_equal(evaluate("(equal? (list 1 (list 2)) (list 1 (list 2)))"), TRUE)
 })

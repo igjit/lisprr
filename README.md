@@ -1,5 +1,9 @@
 # lisprr
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/igjit/lisprr.svg?branch=master)](https://travis-ci.org/igjit/lisprr)
+<!-- badges: end -->
+
 A toy Lisp interpreter in R
 
 ## Installation

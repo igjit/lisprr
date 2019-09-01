@@ -71,7 +71,7 @@ test_that("define", {
   expect_equal(evaluate("(begin (define l (list 2 3 (list 4 5))) l)"), list(2, 3, list(4, 5)))
 
   env <- new.env()
-  evaluate("(define map (lambda (f l) (if (null? l) (quote ()) (cons (f (car l)) (map f (cdr l))))))", env)
+  evaluate("(define (map f l) (if (null? l) (quote ()) (cons (f (car l)) (map f (cdr l)))))", env)
   expect_equal(evaluate("(map (lambda (x) (+ x 10)) (list 1 2 3))", env), list(11, 12, 13))
 })
 

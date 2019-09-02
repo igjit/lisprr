@@ -15,45 +15,56 @@ knitr::opts_chunk$set(
 # lisprr
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/igjit/lisprr.svg?branch=master)](https://travis-ci.org/igjit/lisprr)
+[![Codecov test coverage](https://codecov.io/gh/igjit/lisprr/branch/master/graph/badge.svg)](https://codecov.io/gh/igjit/lisprr?branch=master)
 <!-- badges: end -->
 
-The goal of lisprr is to ...
+A toy Lisp interpreter in R
 
 ## Installation
 
-You can install the released version of lisprr from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("lisprr")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install lisprr from github with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("igjit/lisprr")
 ```
-## Example
 
-This is a basic example which shows you how to solve a common problem:
+## How to play
 
-```{r example}
-library(lisprr)
-## basic example code
+### evaluate
+
+```{r}
+lisprr::evaluate("(+ 1 2)")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
+```{r}
+lisprr::evaluate("(plot (: 1 10))")
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+### translate
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r}
+lisprr::translate("(+ 1 2)")
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+```{r}
+lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
+```
+
+### repl
+
+```lisp
+> lisprr::repl()
+lisprr> (: 1 10)
+1 2 3 4 5 6 7 8 9 10
+lisprr> (define add2 (lambda (x) (+ x 2)))
+#<closure>
+lisprr> (add2 40)
+42
+lisprr> (plot iris)
+
+lisprr> q
+bye.
+>
+```

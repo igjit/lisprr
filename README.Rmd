@@ -38,7 +38,7 @@ devtools::install_github("igjit/lisprr")
 lisprr::evaluate("(+ 1 2)")
 ```
 
-```{r}
+```{r eval=FALSE}
 lisprr::evaluate("(plot (: 1 10))")
 ```
 

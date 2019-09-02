@@ -43,7 +43,7 @@ lisprr::translate("(+ 1 2)")
 ```
 
 ``` r
-lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
+lisprr::translate("(define (add2 x) (+ x 2))")
 #> add2 <- function(x = NULL) {
 #>     x + 2
 #> }
@@ -55,7 +55,7 @@ lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
 > lisprr::repl()
 lisprr> (: 1 10)
 1 2 3 4 5 6 7 8 9 10
-lisprr> (define add2 (lambda (x) (+ x 2)))
+lisprr> (define (add2 x) (+ x 2))
 #<closure>
 lisprr> (add2 40)
 42

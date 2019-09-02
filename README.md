@@ -1,8 +1,14 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # lisprr
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/igjit/lisprr.svg?branch=master)](https://travis-ci.org/igjit/lisprr)
-[![Codecov test coverage](https://codecov.io/gh/igjit/lisprr/branch/master/graph/badge.svg)](https://codecov.io/gh/igjit/lisprr?branch=master)
+
+[![Travis build
+status](https://travis-ci.org/igjit/lisprr.svg?branch=master)](https://travis-ci.org/igjit/lisprr)
+[![Codecov test
+coverage](https://codecov.io/gh/igjit/lisprr/branch/master/graph/badge.svg)](https://codecov.io/gh/igjit/lisprr?branch=master)
 <!-- badges: end -->
 
 A toy Lisp interpreter in R
@@ -10,7 +16,6 @@ A toy Lisp interpreter in R
 ## Installation
 
 You can install lisprr from github with:
-
 
 ``` r
 # install.packages("devtools")
@@ -21,23 +26,23 @@ devtools::install_github("igjit/lisprr")
 
 ### evaluate
 
-```r
+``` r
 lisprr::evaluate("(+ 1 2)")
 #> [1] 3
 ```
 
-```r
+``` r
 lisprr::evaluate("(plot (: 1 10))")
 ```
 
 ### translate
 
-```r
+``` r
 lisprr::translate("(+ 1 2)")
 #> 1 + 2
 ```
 
-```r
+``` r
 lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
 #> add2 <- function(x = NULL) {
 #>     x + 2
@@ -46,7 +51,7 @@ lisprr::translate("(define add2 (lambda (x) (+ x 2)))")
 
 ### repl
 
-```lisp
+``` lisp
 > lisprr::repl()
 lisprr> (: 1 10)
 1 2 3 4 5 6 7 8 9 10

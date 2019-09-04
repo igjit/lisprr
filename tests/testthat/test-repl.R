@@ -7,4 +7,8 @@ test_that("repl", {
     with_mock(readline = readline_mock(c("(+ 1 2)", "q")),
               repl()),
     paste("3", "bye.", sep = "\n"))
+  expect_output(
+    with_mock(readline = readline_mock(c(")", "q")),
+              repl()),
+    "ERROR: unexpected )")
 })

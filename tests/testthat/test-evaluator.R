@@ -1,5 +1,3 @@
-context("test-evaluator.R")
-
 test_that("arithmetic operations", {
   expect_equal(evaluate("(+ 1 2)"), 3)
   expect_equal(evaluate("(* 2 3)"), 6)

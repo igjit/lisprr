@@ -1,5 +1,3 @@
-context("test-parser.R")
-
 test_that("parse", {
   expect_equal(parse("a"), "a")
   expect_equal(parse("1"), 1)

@@ -37,8 +37,8 @@ test_that("lambda", {
 })
 
 test_that("symbol?", {
-  expect_equal(evaluate("(symbol? (quote x))"), TRUE)
-  expect_equal(evaluate("(symbol? 1)"), FALSE)
+  expect_true(evaluate("(symbol? (quote x))"))
+  expect_false(evaluate("(symbol? 1)"))
 })
 
 test_that("=", {
@@ -47,7 +47,7 @@ test_that("=", {
 })
 
 test_that("equal?", {
-  expect_equal(evaluate("(equal? (list 1 (list 2)) (list 1 (list 2)))"), TRUE)
+  expect_true(evaluate("(equal? (list 1 (list 2)) (list 1 (list 2)))"))
 })
 
 test_that("set!", {

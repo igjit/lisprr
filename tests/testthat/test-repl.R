@@ -12,3 +12,9 @@ test_that("repl", {
               repl()),
     "ERROR: unexpected )")
 })
+
+test_that("to_string", {
+  expect_equal(to_string(1), "1")
+  expect_equal(to_string(list(1, list(2))), "(1 (2))")
+  expect_equal(to_string(function(x) x), "#<closure>")
+})

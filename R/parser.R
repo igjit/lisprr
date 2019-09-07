@@ -14,11 +14,10 @@ tokenize <- function(s) {
 }
 
 read_from <- function(tokens, i) {
-  if (length(tokens) < i) stop("unexpected EOF while reading")
-
   if (tokens[i] == "(") {
     L <- list()
     i <- i + 1                          # skip "("
+    if (length(tokens) < i) stop("unexpected EOF while reading")
     while (tokens[i] != ")") {
       res <- read_from(tokens, i)
       L <- append(L, res[1])

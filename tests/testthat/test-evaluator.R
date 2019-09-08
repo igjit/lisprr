@@ -36,6 +36,18 @@ test_that("lambda", {
   expect_equal(evaluate("((lambda () (+ 1 2)))"), 3)
 })
 
+test_that("list?", {
+  expect_true(evaluate("(list? (list 1))"))
+  expect_true(evaluate("(list? (list))"))
+  expect_false(evaluate("(list? 1)"))
+})
+
+test_that("null?", {
+  expect_true(evaluate("(null? (list))"))
+  expect_false(evaluate("(null? (list 1))"))
+  expect_false(evaluate("(null? 1)"))
+})
+
 test_that("symbol?", {
   expect_true(evaluate("(symbol? (quote x))"))
   expect_false(evaluate("(symbol? 1)"))

@@ -17,6 +17,7 @@ test_that("list processing", {
 test_that("if", {
   expect_equal(evaluate("(if T 2 3)"), 2)
   expect_equal(evaluate("(if F 2 3)"), 3)
+  expect_null(evaluate("(if F 2)"))
 })
 
 test_that("quote", {

@@ -37,6 +37,11 @@ compile <- function(x) {
     x
   } else if (length(x) == 0) {          # empty list
     x
+  } else if (identical(x[[1]], "if")) { # (if test conseq alt)
+    test <- x[[2]]
+    conseq <- x[[3]]
+    alt <- x[[4]]
+    call("if", compile(test), compile(conseq), compile(alt))
   } else if (identical(x[[1]], "define")) {
     if (is.list(x[[2]])) {              # (define (var arg*) exp*)
       var <- x[[2]][[1]]

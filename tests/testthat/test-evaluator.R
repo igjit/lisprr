@@ -17,6 +17,7 @@ test_that("list processing", {
 test_that("if", {
   expect_equal(evaluate("(if T 2 3)"), 2)
   expect_equal(evaluate("(if F 2 3)"), 3)
+  expect_equal(evaluate("(if F 2 3 4)"), 4)
 })
 
 test_that("quote", {
@@ -88,4 +89,6 @@ test_that("define", {
 test_that("translate", {
   expect_equal(translate("(set! a 1)"), quote(a <- 1))
   expect_equal(translate("(not a)"), quote(!a))
+  expect_equal(translate("(if a 1 2)"), quote(if (a) 1 else 2))
+  expect_equal(translate("(if a 1 2 3)"), quote(if (a) 1 else { 2; 3 }))
 })

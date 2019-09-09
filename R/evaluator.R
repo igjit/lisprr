@@ -37,11 +37,16 @@ compile <- function(x) {
     x
   } else if (length(x) == 0) {          # empty list
     x
-  } else if (identical(x[[1]], "if")) { # (if test conseq alt)
+  } else if (identical(x[[1]], "if")) { # (if test conseq alt*)
     test <- x[[2]]
     conseq <- x[[3]]
-    alt <- x[[4]]
-    call("if", compile(test), compile(conseq), compile(alt))
+    alts <- x[-(1:3)]
+    alt_call <- if (length(alts) == 1) {
+                  compile(alts[[1]])
+                } else {
+                  as.call(c(quote(`{`), lapply(alts, compile)))
+                }
+    call("if", compile(test), compile(conseq), alt_call)
   } else if (identical(x[[1]], "define")) {
     if (is.list(x[[2]])) {              # (define (var arg*) exp*)
       var <- x[[2]][[1]]

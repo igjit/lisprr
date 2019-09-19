@@ -59,6 +59,20 @@ test_that("=", {
   expect_false(evaluate("(= 1 2)"))
 })
 
+test_that("and", {
+  expect_equal(evaluate("(and 1 2)"), 2)
+  expect_false(evaluate("(and F 2)"))
+  expect_false(evaluate("(and 1 F)"))
+  expect_false(evaluate("(and F (stop))"))
+})
+
+test_that("or", {
+  expect_equal(evaluate("(or 1 2)"), 1)
+  expect_equal(evaluate("(or F 2)"), 2)
+  expect_false(evaluate("(or F F)"))
+  expect_equal(evaluate("(or 1 (stop))"), 1)
+})
+
 test_that("equal?", {
   expect_true(evaluate("(equal? (list 1 (list 2)) (list 1 (list 2)))"))
 })

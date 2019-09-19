@@ -27,7 +27,9 @@ r_functions <- list(
   "cdr" = function(x) x[-1],
   "list?" = is.list,
   "null?" = function(x) identical(x, list()),
-  "symbol?" = is.name
+  "symbol?" = is.name,
+  "and" = function(a, b) if (x <- a) b else x,
+  "or" = function(a, b) if (x <- a) x else b
 )
 
 compile <- function(x) {

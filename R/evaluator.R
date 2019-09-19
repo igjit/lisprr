@@ -28,6 +28,7 @@ r_functions <- list(
   "list?" = is.list,
   "null?" = function(x) identical(x, list()),
   "symbol?" = is.name,
+  "number?" = is.numeric,
   "and" = function(a, b) if (x <- a) b else x,
   "or" = function(a, b) if (x <- a) x else b
 )

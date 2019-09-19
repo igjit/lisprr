@@ -54,6 +54,11 @@ test_that("symbol?", {
   expect_false(evaluate("(symbol? 1)"))
 })
 
+test_that("number?", {
+  expect_true(evaluate("(number? 1)"))
+  expect_false(evaluate("(number? (list 1))"))
+})
+
 test_that("=", {
   expect_true(evaluate("(= 1 1)"))
   expect_false(evaluate("(= 1 2)"))
